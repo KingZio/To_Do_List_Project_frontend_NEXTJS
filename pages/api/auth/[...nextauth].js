@@ -4,12 +4,12 @@ import GithubProvider from "next-auth/providers/github"
 export const authOptions = {
     providers: [
         GithubProvider({
-            clientId: clientId,
-            clientSecret: clientSecret,
+            clientId: "",
+            clientSecret: "",
         }),
     ],
 
-    secret : secret,
+    secret : "",
     debug: true,
 };
 export default NextAuth(authOptions);

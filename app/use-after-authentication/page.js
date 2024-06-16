@@ -1,22 +1,22 @@
-import LoginBtn from "@/app/LoginBtn";
-import ResisterBtn from "@/app/ResisterBtn";
-import {redirect} from "next/navigation";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
+import {redirect} from "next/navigation";
+import LoginBtn from "@/app/LoginBtn";
+import LogoutBtn from "@/app/LogoutBtn";
 
 export default async function useAfterAuthentication() {
 
-    const session = await getServerSession(authOptions);
+    let session = await getServerSession(authOptions)
 
-    if (session != null) {
-        console.log("로그인 완료")
-        redirect("/")// 세션이 있으면 바로 리디렉션
-    }
+    if (session != null) redirect("/")
 
     return(
-        <div className={"use-after-authentication-container"}>
-            <h1>로그인 후 사용 부탁드립니다</h1>
-            <div className={"authentication-container"}><ResisterBtn></ResisterBtn><LoginBtn></LoginBtn></div>
+        <div className={"use-after-authentication"}>
+            <p>로그인 후 이용해주세요</p>
+            <div className={"use-after-authentication-buttons"}>
+                <LoginBtn></LoginBtn>
+                <LogoutBtn></LogoutBtn>
+            </div>
         </div>
     )
 }

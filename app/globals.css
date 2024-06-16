@@ -1,166 +1,237 @@
-body{
+/* 글로벌 스타일 */
+body {
     margin: 0;
     width: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
 }
 
-.main-container{
-    height: 80vh;
-
+/* 메인 컨테이너 */
+.main-container {
+    height: 100vh;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.navbar{
+/* 네비게이션 바 */
+.navbar {
     width: 100%;
     height: 70px;
-    background-color: whitesmoke;
-    box-shadow: 0 2px 0 0 ;
-    background-color: #bfffed;
-
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
-.left-nav{
-    font-size: 20px;
-    width: 50%;
-    height: 100%;
-    padding-left: 20px;
-
+.left-nav, .right-nav {
     display: flex;
     align-items: center;
-    flex-direction: row;
     gap: 20px;
+}
+
+.left-nav {
+    margin-left: 20px;
+}
+
+.right-nav{
+    margin-right: 20px;
+
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .left-nav a {
     text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.left-nav a:hover {
+    color: #007bff;
+}
+
+.right-nav button {
+    background-color: #80bcfd;
     color: black;
-}
-
-.right-nav{
-    width: 50%;
-    height: 100%;
-    padding-right: 20px;
-    font-size: 20px;
-
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    gap: 20px;
-}
-
-.right-nav button{
-    width: 70px;
-    height: 30px;
+    border: none;
     border-radius: 5px;
-    border: 0;
-    background-color: #ffffff;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.right-nav button:hover{
-    width: 75px;
-    height: 35px;
-}
-
-.list-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.use-after-authentication-container{
-    height: 60vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.authentication-container{
-    display: flex;
-    gap: 20px;
-}
-
-.authentication-container button{
-    width: 80px;
-    height: 30px;
-    border-radius: 5px;
-    border: 0px;
-}
-
-.list-container label{
-    margin-top: 5px;
-}
-
-
-.input-container{
-    font-size: 20px;
-    margin-top: 30px;
-
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.input-container input{
-    width: 200px;
-    height: 30px;
-}
-
-.input-container button{
-    width: 70px;
-    height: 35px;
-    border-radius: 5px;
-    border: 0px;
-    transition: transform 0.3s;
-}
-
-.input-container button:active{
+.right-nav button:hover {
+    background-color: #0056b3;
     transform: scale(1.1);
 }
 
-.todo-container{
-    width: 100%;
-    height: 100%;
-    margin-top: 30px;
-
+/* 리스트 컨테이너 */
+.list-container {
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.todo-element{
-    width: 50%;
-    height: 50px;
-    background-color: whitesmoke;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 18px;
+/* 입력 컨테이너 */
+.input-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: center;
+}
 
+.input-container label {
+    font-size: 16px;
+}
+
+.input-container input {
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+}
+
+.input-container input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.primary-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.primary-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 할일 요소 */
+.todo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-element {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.todo-element:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todo-left-box p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.todo-right-box {
     display: flex;
     align-items: center;
 }
 
-.todo-left-box{
-    width: 50%;
+.delete-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
+    }
+
+    .list-container {
+        width: 90%;
+        margin-top: 70px;
+    }
+
+    .input-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}
+
+.session{
+    display: flex;
+    justify-content: center;
+}
+
+.use-after-authentication{
+    width: 100%;
+    height: 100vh;
+    font-size: 20px;
 
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
-.todo-right-box{
-    width: 50%;
 
+.use-after-authentication-buttons{
     display: flex;
-    flex-direction: row-reverse;
+    gap: 10px;
 }
-.todo-right-box button{
+
+.use-after-authentication-buttons button{
     width: 70px;
     height: 30px;
+    border: 0px;
+    background-color: #80bcfd;
+    border-radius: 5px;
+
 }

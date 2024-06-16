@@ -52,6 +52,7 @@ export default function ListClient(props) {
     };
 
     return (
+        <div className={"session"}>
         <div className="list-container">
             <div className="input-container">
                 <label>할일 </label>
@@ -61,21 +62,22 @@ export default function ListClient(props) {
                 <input type="text" placeholder="월/일" id="deadline" maxLength={5} autoComplete="off" />
                 <p>&nbsp;&nbsp;&nbsp;</p>
                 <input style={{ display: "none" }} value={props.name} id="name" readOnly/>
-                <button onClick={todoSubmitHandler}>추가</button>
+                <button className="primary-button" onClick={todoSubmitHandler}>추가</button>
             </div>
             <div className="todo-container">
                 {list.map((number) => (
                     <div key={number} className="todo-element">
-                        <div className={"todo-left-box"}>
+                        <div className="todo-left-box">
                             <p>할일: {data[number].todo}</p>
                             <p>기한: {data[number].deadline}</p>
                         </div>
-                        <div className={"todo-right-box"}>
-                            <button onClick={() => {deleteRequestHandler(data[number].id)}}>🗑</button>
+                        <div className="todo-right-box">
+                            <button className="delete-button" onClick={() => {deleteRequestHandler(data[number].id)}}>🗑</button>
                         </div>
                     </div>
                 ))}
             </div>
+        </div>
         </div>
     );
 }
